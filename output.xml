@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0 (Python 3.12.3 on win32)" generated="2024-05-13T16:23:49.016518" rpa="false" schemaversion="5">
+<suite id="s1" name="VerifyResponse" source="c:\Projetos\API Tests Robot Framework\VerifyResponse.robot">
+<test id="s1-t1" name="Cenário 02" line="40">
+<kw name="Delete Product by 9" source_name="Delete Product by ${id}">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-05-13T16:23:49.169962" level="INFO">&amp;{headers} = { Content-type=application/json }</msg>
+<var>&amp;{headers}</var>
+<arg>Content-type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-05-13T16:23:49.168964" elapsed="0.002997"/>
+</kw>
+<kw name="Replace String" owner="String">
+<msg time="2024-05-13T16:23:49.172961" level="INFO">${DELETE_PRODUCT} = 9</msg>
+<var>${DELETE_PRODUCT}</var>
+<arg>${DELETE_PRODUCT}</arg>
+<arg>idProduct/delete</arg>
+<arg>${id}</arg>
+<doc>Replaces ``search_for`` in the given ``string`` with ``replace_with``.</doc>
+<status status="PASS" start="2024-05-13T16:23:49.172961" elapsed="0.000998"/>
+</kw>
+<kw name="DELETE" owner="RequestsLibrary">
+<msg time="2024-05-13T16:23:50.206280" level="INFO">DELETE Request : url=https://dummyjson.com/products/9 
+ path_url=/products/9 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-type': 'application/json', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2024-05-13T16:23:50.206280" level="INFO">DELETE Response : url=https://dummyjson.com/products/9 
+ status=200, reason=OK 
+ headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-ratelimit-limit': '100', 'x-ratelimit-remaining': '99', 'date': 'Mon, 13 May 2024 19:23:50 GMT', 'x-ratelimit-reset': '1715628231', 'content-type': 'application/json; charset=utf-8', 'content-length': '625', 'etag': 'W/"271-1GglwRa75i/Tv3TMceh8RwFm34M"', 'vary': 'Accept-Encoding', 'server': 'railway'} 
+ body={"id":9,"title":"Infinix INBOOK","description":"Infinix Inbook X1 Ci3 10th 8GB 256GB 14 Win10 Grey – 1 Year Warranty","price":1099,"discountPercentage":11.83,"rating":4.54,"stock":96,"brand":"Infinix","category":"laptops","thumbnail":"https://cdn.dummyjson.com/product-images/9/thumbnail.jpg","images":["https://cdn.dummyjson.com/product-images/9/1.jpg","https://cdn.dummyjson.com/product-images/9/2.png","https://cdn.dummyjson.com/product-images/9/3.png","https://cdn.dummyjson.com/product-images/9/4.jpg","https://cdn.dummyjson.com/product-images/9/thumbnail.jpg"],"isDeleted":true,"deletedOn":"2024-05-13T19:23:50.633Z"} 
+ </msg>
+<msg time="2024-05-13T16:23:50.207344" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>url=${HOST}/${GET_PRODUCTS}/${DELETE_PRODUCT}</arg>
+<arg>headers=&amp;{headers}</arg>
+<doc>Sends a DELETE request.</doc>
+<status status="PASS" start="2024-05-13T16:23:49.173959" elapsed="1.033385"/>
+</kw>
+<return>
+<value>${response}</value>
+<status status="PASS" start="2024-05-13T16:23:50.207344" elapsed="0.000944"/>
+</return>
+<msg time="2024-05-13T16:23:50.208288" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<status status="PASS" start="2024-05-13T16:23:49.167964" elapsed="1.040324"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${response.json()["isDeleted"]}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2024-05-13T16:23:50.210286" elapsed="0.001998"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-05-13T16:23:50.214284" level="INFO">{'id': 9, 'title': 'Infinix INBOOK', 'description': 'Infinix Inbook X1 Ci3 10th 8GB 256GB 14 Win10 Grey – 1 Year Warranty', 'price': 1099, 'discountPercentage': 11.83, 'rating': 4.54, 'stock': 96, 'brand': 'Infinix', 'category': 'laptops', 'thumbnail': 'https://cdn.dummyjson.com/product-images/9/thumbnail.jpg', 'images': ['https://cdn.dummyjson.com/product-images/9/1.jpg', 'https://cdn.dummyjson.com/product-images/9/2.png', 'https://cdn.dummyjson.com/product-images/9/3.png', 'https://cdn.dummyjson.com/product-images/9/4.jpg', 'https://cdn.dummyjson.com/product-images/9/thumbnail.jpg'], 'isDeleted': True, 'deletedOn': '2024-05-13T19:23:50.633Z'}</msg>
+<arg>${response.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-05-13T16:23:50.213285" elapsed="0.001997"/>
+</kw>
+<status status="PASS" start="2024-05-13T16:23:49.167964" elapsed="1.048318"/>
+</test>
+<status status="PASS" start="2024-05-13T16:23:49.021513" elapsed="1.197767"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="VerifyResponse">VerifyResponse</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
