@@ -1,159 +1,177 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.0 (Python 3.12.3 on win32)" generated="2024-05-13T16:23:59.754055" rpa="false" schemaversion="5">
+<robot generator="Robot 7.0 (Python 3.12.3 on win32)" generated="2024-06-02T17:44:53.226346" rpa="false" schemaversion="5">
 <suite id="s1" name="API Tests Robot Framework" source="C:\Projetos\API Tests Robot Framework">
-<suite id="s1-s1" name="VerifyResponse" source="C:\Projetos\API Tests Robot Framework\VerifyResponse.robot">
-<test id="s1-s1-t1" name="CENÁRIO 01" line="31">
-<kw name="Get Product by id 3" source_name="Get Product by id ${id}">
+<suite id="s1-s1" name="PUT" source="C:\Projetos\API Tests Robot Framework\PUT.robot">
+<test id="s1-s1-t1" name="CENÁRIO 01" line="37">
+<kw name="Get Current Time" owner="ExcelLibrary">
+<msg time="2024-06-02T17:44:53.851223" level="INFO">${start_time} = 2024-06-02 17:44:53</msg>
+<var>${start_time}</var>
+<doc>Returns the current time as a string.</doc>
+<status status="PASS" start="2024-06-02T17:44:53.851223" elapsed="0.000000"/>
+</kw>
+<kw name="Get Row Values" owner="ExcelLibrary">
+<msg time="2024-06-02T17:44:53.860125" level="INFO">${values} = [80, 'Galaxy Isa', 'novo celular isa', 6521, 'Samsung', 'smartphones']</msg>
+<var>${values}</var>
+<arg>${EXCEL_FILE}</arg>
+<arg>${SHEET_NAME}</arg>
+<arg>${START_CELL}</arg>
+<arg>${END_CELL}</arg>
+<doc>Returns the values of a range of cells in a specific row.</doc>
+<status status="PASS" start="2024-06-02T17:44:53.852223" elapsed="0.008902"/>
+</kw>
+<kw name="Update Product">
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2024-05-13T16:23:59.924041" level="INFO">&amp;{headers} = { Content-type=application/json }</msg>
+<msg time="2024-06-02T17:44:53.866123" level="INFO">&amp;{headers} = { Content-type=application/json }</msg>
 <var>&amp;{headers}</var>
 <arg>Content-type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2024-05-13T16:23:59.924041" elapsed="0.000998"/>
+<status status="PASS" start="2024-06-02T17:44:53.865123" elapsed="0.001000"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-06-02T17:44:53.867121" level="INFO">&amp;{body} = { title=Galaxy Isa | description=novo celular isa | price=6521 | brand=Samsung | category=smartphones }</msg>
+<var>&amp;{body}</var>
+<arg>title=${title}</arg>
+<arg>description=${description}</arg>
+<arg>price=${price}</arg>
+<arg>brand=${brand}</arg>
+<arg>category=${category}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-06-02T17:44:53.866123" elapsed="0.001999"/>
+</kw>
+<kw name="Convert To String" owner="BuiltIn">
+<msg time="2024-06-02T17:44:53.869121" level="INFO">${str_id} = 80</msg>
+<var>${str_id}</var>
+<arg>${id}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="PASS" start="2024-06-02T17:44:53.868122" elapsed="0.000999"/>
 </kw>
 <kw name="Replace String" owner="String">
-<msg time="2024-05-13T16:23:59.925039" level="INFO">${GET_ONE_PRODUCT} = 3</msg>
-<var>${GET_ONE_PRODUCT}</var>
-<arg>${GET_ONE_PRODUCT}</arg>
+<msg time="2024-06-02T17:44:53.870120" level="INFO">${UPDATE_PRODUCT} = products/80</msg>
+<var>${UPDATE_PRODUCT}</var>
+<arg>${UPDATE_PRODUCT}</arg>
 <arg>idProduct</arg>
-<arg>${id}</arg>
+<arg>${str_id}</arg>
 <doc>Replaces ``search_for`` in the given ``string`` with ``replace_with``.</doc>
-<status status="PASS" start="2024-05-13T16:23:59.925039" elapsed="0.000999"/>
+<status status="PASS" start="2024-06-02T17:44:53.869121" elapsed="0.000999"/>
 </kw>
-<kw name="GET" owner="RequestsLibrary">
-<msg time="2024-05-13T16:24:00.956595" level="INFO">GET Request : url=https://dummyjson.com/products/3 
- path_url=/products/3 
- headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-type': 'application/json'} 
- body=None 
+<kw name="PUT" owner="RequestsLibrary">
+<msg time="2024-06-02T17:44:54.883162" level="INFO">PUT Request : url=https://dummyjson.com/products/80 
+ path_url=/products/80 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-type': 'application/json', 'Content-Length': '120'} 
+ body=b'{"title": "Galaxy Isa", "description": "novo celular isa", "price": 6521, "brand": "Samsung", "category": "smartphones"}' 
  </msg>
-<msg time="2024-05-13T16:24:00.957594" level="INFO">GET Response : url=https://dummyjson.com/products/3 
+<msg time="2024-06-02T17:44:54.884161" level="INFO">PUT Response : url=https://dummyjson.com/products/80 
  status=200, reason=OK 
- headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-ratelimit-limit': '100', 'x-ratelimit-remaining': '99', 'date': 'Mon, 13 May 2024 19:24:01 GMT', 'x-ratelimit-reset': '1715628251', 'content-type': 'application/json; charset=utf-8', 'content-length': '357', 'etag': 'W/"165-+GIHhlLnZ7lH1q0XfQ8p5ALjuIM"', 'vary': 'Accept-Encoding', 'server': 'railway'} 
- body={"id":3,"title":"Samsung Universe 9","description":"Samsung's new variant which goes beyond Galaxy to the Universe","price":1249,"discountPercentage":15.46,"rating":4.09,"stock":36,"brand":"Samsung","category":"smartphones","thumbnail":"https://cdn.dummyjson.com/product-images/3/thumbnail.jpg","images":["https://cdn.dummyjson.com/product-images/3/1.jpg"]} 
+ headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-ratelimit-limit': '100', 'x-ratelimit-remaining': '98', 'date': 'Sun, 02 Jun 2024 20:44:56 GMT', 'x-ratelimit-reset': '1717361101', 'content-type': 'application/json; charset=utf-8', 'content-length': '546', 'etag': 'W/"222-Xjdk6+oeBUkmB3jIX8x5GudQ9os"', 'vary': 'Accept-Encoding', 'server': 'railway'} 
+ body={"id":80,"title":"Galaxy Isa","price":6521,"discountPercentage":15.25,"stock":34,"rating":4.62,"images":["https://cdn.dummyjson.com/products/images/laptops/Huawei%20Matebook%20X%20Pro/1.png","https://cdn.dummyjson.com/products/images/laptops/Huawei%20Matebook%20X%20Pro/2.png","https://cdn.dummyjson.com/products/images/laptops/Huawei%20Matebook%20X%20Pro/3.png"],"thumbnail":"https://cdn.dummyjson.com/products/images/laptops/Huawei%20Matebook%20X%20Pro/thumbnail.png","description":"novo celular isa","brand":"Samsung","category":"smartphones"} 
  </msg>
-<msg time="2024-05-13T16:24:00.957594" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<var>${response}</var>
-<arg>url=${HOST}/${GET_PRODUCTS}/${GET_ONE_PRODUCT}</arg>
+<msg time="2024-06-02T17:44:54.884161" level="INFO">${responseRequest} = &lt;Response [200]&gt;</msg>
+<var>${responseRequest}</var>
+<arg>url=${HOST}/${UPDATE_PRODUCT}</arg>
 <arg>headers=&amp;{headers}</arg>
-<doc>Sends a GET request.</doc>
-<status status="PASS" start="2024-05-13T16:23:59.926038" elapsed="1.031556"/>
+<arg>json=&amp;{body}</arg>
+<doc>Sends a PUT request.</doc>
+<status status="PASS" start="2024-06-02T17:44:53.871121" elapsed="1.014039"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-06-02T17:44:54.886160" level="INFO">${status_code} = 200</msg>
+<var>${status_code}</var>
+<arg>${responseRequest.status_code}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-06-02T17:44:54.885160" elapsed="0.001000"/>
 </kw>
 <return>
-<value>${response}</value>
-<status status="PASS" start="2024-05-13T16:24:00.958592" elapsed="0.000000"/>
+<value>${responseRequest}</value>
+<value>${status_code}</value>
+<status status="PASS" start="2024-06-02T17:44:54.887161" elapsed="0.000000"/>
 </return>
-<msg time="2024-05-13T16:24:00.959592" level="INFO">${responseRequest} = &lt;Response [200]&gt;</msg>
+<msg time="2024-06-02T17:44:54.887161" level="INFO">${responseRequest} = &lt;Response [200]&gt;</msg>
+<msg time="2024-06-02T17:44:54.887161" level="INFO">${status_code} = 200</msg>
 <var>${responseRequest}</var>
-<status status="PASS" start="2024-05-13T16:23:59.923039" elapsed="1.036553"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<msg time="2024-05-13T16:24:00.961589" level="INFO">Argument types are:
-&lt;class 'int'&gt;
-&lt;class 'str'&gt;</msg>
-<arg>${responseRequest.status_code}</arg>
-<arg>200</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2024-05-13T16:24:00.960589" elapsed="0.001000"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${responseRequest.json()["title"]}</arg>
-<arg>Samsung Universe 9</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2024-05-13T16:24:00.962588" elapsed="0.000999"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<msg time="2024-05-13T16:24:00.965586" level="INFO">Argument types are:
-&lt;class 'int'&gt;
-&lt;class 'str'&gt;</msg>
-<arg>${responseRequest.json()["price"]}</arg>
-<arg>1249</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2024-05-13T16:24:00.964586" elapsed="0.001000"/>
+<var>${status_code}</var>
+<arg>${values[0]}</arg>
+<arg>${values[1]}</arg>
+<arg>${values[2]}</arg>
+<arg>${values[3]}</arg>
+<arg>${values[4]}</arg>
+<arg>${values[5]}</arg>
+<status status="PASS" start="2024-06-02T17:44:53.861125" elapsed="1.027036"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2024-05-13T16:24:00.967585" level="INFO">{'id': 3, 'title': 'Samsung Universe 9', 'description': "Samsung's new variant which goes beyond Galaxy to the Universe", 'price': 1249, 'discountPercentage': 15.46, 'rating': 4.09, 'stock': 36, 'brand': 'Samsung', 'category': 'smartphones', 'thumbnail': 'https://cdn.dummyjson.com/product-images/3/thumbnail.jpg', 'images': ['https://cdn.dummyjson.com/product-images/3/1.jpg']}</msg>
+<msg time="2024-06-02T17:44:54.889160" level="INFO">{'id': 80, 'title': 'Galaxy Isa', 'price': 6521, 'discountPercentage': 15.25, 'stock': 34, 'rating': 4.62, 'images': ['https://cdn.dummyjson.com/products/images/laptops/Huawei%20Matebook%20X%20Pro/1.png', 'https://cdn.dummyjson.com/products/images/laptops/Huawei%20Matebook%20X%20Pro/2.png', 'https://cdn.dummyjson.com/products/images/laptops/Huawei%20Matebook%20X%20Pro/3.png'], 'thumbnail': 'https://cdn.dummyjson.com/products/images/laptops/Huawei%20Matebook%20X%20Pro/thumbnail.png', 'description': 'novo celular isa', 'brand': 'Samsung', 'category': 'smartphones'}</msg>
 <arg>${responseRequest.json()}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2024-05-13T16:24:00.966585" elapsed="0.001000"/>
+<status status="PASS" start="2024-06-02T17:44:54.888161" elapsed="0.000999"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2024-05-13T16:24:00.968584" level="INFO">Samsung Universe 9</msg>
+<msg time="2024-06-02T17:44:54.891157" level="INFO">Galaxy Isa</msg>
 <arg>${responseRequest.json()["title"]}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2024-05-13T16:24:00.968584" elapsed="0.001000"/>
-</kw>
-<status status="PASS" start="2024-05-13T16:23:59.922041" elapsed="1.047543"/>
-</test>
-<test id="s1-s1-t2" name="Cenário 02" line="40">
-<kw name="Delete Product by 9" source_name="Delete Product by ${id}">
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2024-05-13T16:24:00.975582" level="INFO">&amp;{headers} = { Content-type=application/json }</msg>
-<var>&amp;{headers}</var>
-<arg>Content-type=application/json</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2024-05-13T16:24:00.974581" elapsed="0.001001"/>
-</kw>
-<kw name="Replace String" owner="String">
-<msg time="2024-05-13T16:24:00.976581" level="INFO">${DELETE_PRODUCT} = 9</msg>
-<var>${DELETE_PRODUCT}</var>
-<arg>${DELETE_PRODUCT}</arg>
-<arg>idProduct/delete</arg>
-<arg>${id}</arg>
-<doc>Replaces ``search_for`` in the given ``string`` with ``replace_with``.</doc>
-<status status="PASS" start="2024-05-13T16:24:00.975582" elapsed="0.000999"/>
-</kw>
-<kw name="DELETE" owner="RequestsLibrary">
-<msg time="2024-05-13T16:24:01.963608" level="INFO">DELETE Request : url=https://dummyjson.com/products/9 
- path_url=/products/9 
- headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-type': 'application/json', 'Content-Length': '0'} 
- body=None 
- </msg>
-<msg time="2024-05-13T16:24:01.964608" level="INFO">DELETE Response : url=https://dummyjson.com/products/9 
- status=200, reason=OK 
- headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-ratelimit-limit': '100', 'x-ratelimit-remaining': '98', 'date': 'Mon, 13 May 2024 19:24:02 GMT', 'x-ratelimit-reset': '1715628251', 'content-type': 'application/json; charset=utf-8', 'content-length': '625', 'etag': 'W/"271-NElIU+g9j69fB3FtzX7oQYbw0eQ"', 'vary': 'Accept-Encoding', 'server': 'railway'} 
- body={"id":9,"title":"Infinix INBOOK","description":"Infinix Inbook X1 Ci3 10th 8GB 256GB 14 Win10 Grey – 1 Year Warranty","price":1099,"discountPercentage":11.83,"rating":4.54,"stock":96,"brand":"Infinix","category":"laptops","thumbnail":"https://cdn.dummyjson.com/product-images/9/thumbnail.jpg","images":["https://cdn.dummyjson.com/product-images/9/1.jpg","https://cdn.dummyjson.com/product-images/9/2.png","https://cdn.dummyjson.com/product-images/9/3.png","https://cdn.dummyjson.com/product-images/9/4.jpg","https://cdn.dummyjson.com/product-images/9/thumbnail.jpg"],"isDeleted":true,"deletedOn":"2024-05-13T19:24:02.392Z"} 
- </msg>
-<msg time="2024-05-13T16:24:01.965608" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<var>${response}</var>
-<arg>url=${HOST}/${GET_PRODUCTS}/${DELETE_PRODUCT}</arg>
-<arg>headers=&amp;{headers}</arg>
-<doc>Sends a DELETE request.</doc>
-<status status="PASS" start="2024-05-13T16:24:00.977578" elapsed="0.989025"/>
-</kw>
-<return>
-<value>${response}</value>
-<status status="PASS" start="2024-05-13T16:24:01.966603" elapsed="0.000999"/>
-</return>
-<msg time="2024-05-13T16:24:01.967602" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<var>${response}</var>
-<status status="PASS" start="2024-05-13T16:24:00.973583" elapsed="0.995028"/>
-</kw>
-<kw name="Should Be True" owner="BuiltIn">
-<arg>${response.json()["isDeleted"]}</arg>
-<doc>Fails if the given condition is not true.</doc>
-<status status="PASS" start="2024-05-13T16:24:01.969604" elapsed="0.001999"/>
+<status status="PASS" start="2024-06-02T17:44:54.890159" elapsed="0.001998"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2024-05-13T16:24:01.974600" level="INFO">{'id': 9, 'title': 'Infinix INBOOK', 'description': 'Infinix Inbook X1 Ci3 10th 8GB 256GB 14 Win10 Grey – 1 Year Warranty', 'price': 1099, 'discountPercentage': 11.83, 'rating': 4.54, 'stock': 96, 'brand': 'Infinix', 'category': 'laptops', 'thumbnail': 'https://cdn.dummyjson.com/product-images/9/thumbnail.jpg', 'images': ['https://cdn.dummyjson.com/product-images/9/1.jpg', 'https://cdn.dummyjson.com/product-images/9/2.png', 'https://cdn.dummyjson.com/product-images/9/3.png', 'https://cdn.dummyjson.com/product-images/9/4.jpg', 'https://cdn.dummyjson.com/product-images/9/thumbnail.jpg'], 'isDeleted': True, 'deletedOn': '2024-05-13T19:24:02.392Z'}</msg>
-<arg>${response.json()}</arg>
+<msg time="2024-06-02T17:44:54.893157" level="INFO">novo celular isa</msg>
+<arg>${responseRequest.json()["description"]}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2024-05-13T16:24:01.972601" elapsed="0.002997"/>
+<status status="PASS" start="2024-06-02T17:44:54.892157" elapsed="0.001000"/>
 </kw>
-<status status="PASS" start="2024-05-13T16:24:00.972581" elapsed="1.004018"/>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-06-02T17:44:54.894157" level="INFO">6521</msg>
+<arg>${responseRequest.json()["price"]}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-06-02T17:44:54.894157" elapsed="0.000998"/>
+</kw>
+<kw name="Get Current Time" owner="ExcelLibrary">
+<msg time="2024-06-02T17:44:54.896154" level="INFO">${end_time} = 2024-06-02 17:44:54</msg>
+<var>${end_time}</var>
+<doc>Returns the current time as a string.</doc>
+<status status="PASS" start="2024-06-02T17:44:54.896154" elapsed="0.000000"/>
+</kw>
+<kw name="Write Start End to Excel">
+<kw name="Write Cell Value" owner="ExcelLibrary">
+<arg>${EXCEL_FILE}</arg>
+<arg>${TARGET_SHEET}</arg>
+<arg>A2</arg>
+<arg>${start}</arg>
+<doc>Writes a value to a specific cell in a specific sheet.</doc>
+<status status="PASS" start="2024-06-02T17:44:54.898153" elapsed="0.022985"/>
+</kw>
+<kw name="Write Cell Value" owner="ExcelLibrary">
+<arg>${EXCEL_FILE}</arg>
+<arg>${TARGET_SHEET}</arg>
+<arg>B2</arg>
+<arg>${end}</arg>
+<doc>Writes a value to a specific cell in a specific sheet.</doc>
+<status status="PASS" start="2024-06-02T17:44:54.922138" elapsed="0.028982"/>
+</kw>
+<kw name="Write Cell Value" owner="ExcelLibrary">
+<arg>${EXCEL_FILE}</arg>
+<arg>${TARGET_SHEET}</arg>
+<arg>C2</arg>
+<arg>${status_code}</arg>
+<doc>Writes a value to a specific cell in a specific sheet.</doc>
+<status status="PASS" start="2024-06-02T17:44:54.951120" elapsed="0.023987"/>
+</kw>
+<arg>${start_time}</arg>
+<arg>${end_time}</arg>
+<arg>${status_code}</arg>
+<status status="PASS" start="2024-06-02T17:44:54.897154" elapsed="0.077953"/>
+</kw>
+<status status="PASS" start="2024-06-02T17:44:53.849225" elapsed="1.126881"/>
 </test>
-<status status="PASS" start="2024-05-13T16:23:59.792032" elapsed="2.187564"/>
+<status status="PASS" start="2024-06-02T17:44:53.260716" elapsed="1.717387"/>
 </suite>
-<status status="PASS" start="2024-05-13T16:23:59.760052" elapsed="2.223542"/>
+<status status="PASS" start="2024-06-02T17:44:53.230427" elapsed="1.750674"/>
 </suite>
 <statistics>
 <total>
-<stat pass="2" fail="0" skip="0">All Tests</stat>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="2" fail="0" skip="0" id="s1" name="API Tests Robot Framework">API Tests Robot Framework</stat>
-<stat pass="2" fail="0" skip="0" id="s1-s1" name="VerifyResponse">API Tests Robot Framework.VerifyResponse</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="API Tests Robot Framework">API Tests Robot Framework</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1" name="PUT">API Tests Robot Framework.PUT</stat>
 </suite>
 </statistics>
 <errors>
