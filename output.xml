@@ -1,64 +1,164 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.0 (Python 3.12.3 on win32)" generated="2024-05-13T16:23:49.016518" rpa="false" schemaversion="5">
-<suite id="s1" name="VerifyResponse" source="c:\Projetos\API Tests Robot Framework\VerifyResponse.robot">
-<test id="s1-t1" name="Cenário 02" line="40">
-<kw name="Delete Product by 9" source_name="Delete Product by ${id}">
+<robot generator="Robot 7.0 (Python 3.12.3 on win32)" generated="2024-06-02T17:44:51.551017" rpa="false" schemaversion="5">
+<suite id="s1" name="PUT" source="c:\Projetos\API Tests Robot Framework\PUT.robot">
+<test id="s1-t1" name="CENÁRIO 01" line="37">
+<kw name="Get Current Time" owner="ExcelLibrary">
+<msg time="2024-06-02T17:44:52.158651" level="INFO">${start_time} = 2024-06-02 17:44:52</msg>
+<var>${start_time}</var>
+<doc>Returns the current time as a string.</doc>
+<status status="PASS" start="2024-06-02T17:44:52.158651" elapsed="0.002998"/>
+</kw>
+<kw name="Get Row Values" owner="ExcelLibrary">
+<msg time="2024-06-02T17:44:52.220612" level="INFO">${values} = [80, 'Galaxy Isa', 'novo celular isa', 6521, 'Samsung', 'smartphones']</msg>
+<var>${values}</var>
+<arg>${EXCEL_FILE}</arg>
+<arg>${SHEET_NAME}</arg>
+<arg>${START_CELL}</arg>
+<arg>${END_CELL}</arg>
+<doc>Returns the values of a range of cells in a specific row.</doc>
+<status status="PASS" start="2024-06-02T17:44:52.200623" elapsed="0.019989"/>
+</kw>
+<kw name="Update Product">
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2024-05-13T16:23:49.169962" level="INFO">&amp;{headers} = { Content-type=application/json }</msg>
+<msg time="2024-06-02T17:44:52.235601" level="INFO">&amp;{headers} = { Content-type=application/json }</msg>
 <var>&amp;{headers}</var>
 <arg>Content-type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2024-05-13T16:23:49.168964" elapsed="0.002997"/>
+<status status="PASS" start="2024-06-02T17:44:52.234603" elapsed="0.000998"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-06-02T17:44:52.236601" level="INFO">&amp;{body} = { title=Galaxy Isa | description=novo celular isa | price=6521 | brand=Samsung | category=smartphones }</msg>
+<var>&amp;{body}</var>
+<arg>title=${title}</arg>
+<arg>description=${description}</arg>
+<arg>price=${price}</arg>
+<arg>brand=${brand}</arg>
+<arg>category=${category}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-06-02T17:44:52.235601" elapsed="0.002000"/>
+</kw>
+<kw name="Convert To String" owner="BuiltIn">
+<msg time="2024-06-02T17:44:52.237601" level="INFO">${str_id} = 80</msg>
+<var>${str_id}</var>
+<arg>${id}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="PASS" start="2024-06-02T17:44:52.237601" elapsed="0.000999"/>
 </kw>
 <kw name="Replace String" owner="String">
-<msg time="2024-05-13T16:23:49.172961" level="INFO">${DELETE_PRODUCT} = 9</msg>
-<var>${DELETE_PRODUCT}</var>
-<arg>${DELETE_PRODUCT}</arg>
-<arg>idProduct/delete</arg>
-<arg>${id}</arg>
+<msg time="2024-06-02T17:44:52.239600" level="INFO">${UPDATE_PRODUCT} = products/80</msg>
+<var>${UPDATE_PRODUCT}</var>
+<arg>${UPDATE_PRODUCT}</arg>
+<arg>idProduct</arg>
+<arg>${str_id}</arg>
 <doc>Replaces ``search_for`` in the given ``string`` with ``replace_with``.</doc>
-<status status="PASS" start="2024-05-13T16:23:49.172961" elapsed="0.000998"/>
+<status status="PASS" start="2024-06-02T17:44:52.238600" elapsed="0.001000"/>
 </kw>
-<kw name="DELETE" owner="RequestsLibrary">
-<msg time="2024-05-13T16:23:50.206280" level="INFO">DELETE Request : url=https://dummyjson.com/products/9 
- path_url=/products/9 
- headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-type': 'application/json', 'Content-Length': '0'} 
- body=None 
+<kw name="PUT" owner="RequestsLibrary">
+<msg time="2024-06-02T17:44:53.295267" level="INFO">PUT Request : url=https://dummyjson.com/products/80 
+ path_url=/products/80 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-type': 'application/json', 'Content-Length': '120'} 
+ body=b'{"title": "Galaxy Isa", "description": "novo celular isa", "price": 6521, "brand": "Samsung", "category": "smartphones"}' 
  </msg>
-<msg time="2024-05-13T16:23:50.206280" level="INFO">DELETE Response : url=https://dummyjson.com/products/9 
+<msg time="2024-06-02T17:44:53.295267" level="INFO">PUT Response : url=https://dummyjson.com/products/80 
  status=200, reason=OK 
- headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-ratelimit-limit': '100', 'x-ratelimit-remaining': '99', 'date': 'Mon, 13 May 2024 19:23:50 GMT', 'x-ratelimit-reset': '1715628231', 'content-type': 'application/json; charset=utf-8', 'content-length': '625', 'etag': 'W/"271-1GglwRa75i/Tv3TMceh8RwFm34M"', 'vary': 'Accept-Encoding', 'server': 'railway'} 
- body={"id":9,"title":"Infinix INBOOK","description":"Infinix Inbook X1 Ci3 10th 8GB 256GB 14 Win10 Grey – 1 Year Warranty","price":1099,"discountPercentage":11.83,"rating":4.54,"stock":96,"brand":"Infinix","category":"laptops","thumbnail":"https://cdn.dummyjson.com/product-images/9/thumbnail.jpg","images":["https://cdn.dummyjson.com/product-images/9/1.jpg","https://cdn.dummyjson.com/product-images/9/2.png","https://cdn.dummyjson.com/product-images/9/3.png","https://cdn.dummyjson.com/product-images/9/4.jpg","https://cdn.dummyjson.com/product-images/9/thumbnail.jpg"],"isDeleted":true,"deletedOn":"2024-05-13T19:23:50.633Z"} 
+ headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-ratelimit-limit': '100', 'x-ratelimit-remaining': '99', 'date': 'Sun, 02 Jun 2024 20:44:54 GMT', 'x-ratelimit-reset': '1717361101', 'content-type': 'application/json; charset=utf-8', 'content-length': '546', 'etag': 'W/"222-Xjdk6+oeBUkmB3jIX8x5GudQ9os"', 'vary': 'Accept-Encoding', 'server': 'railway'} 
+ body={"id":80,"title":"Galaxy Isa","price":6521,"discountPercentage":15.25,"stock":34,"rating":4.62,"images":["https://cdn.dummyjson.com/products/images/laptops/Huawei%20Matebook%20X%20Pro/1.png","https://cdn.dummyjson.com/products/images/laptops/Huawei%20Matebook%20X%20Pro/2.png","https://cdn.dummyjson.com/products/images/laptops/Huawei%20Matebook%20X%20Pro/3.png"],"thumbnail":"https://cdn.dummyjson.com/products/images/laptops/Huawei%20Matebook%20X%20Pro/thumbnail.png","description":"novo celular isa","brand":"Samsung","category":"smartphones"} 
  </msg>
-<msg time="2024-05-13T16:23:50.207344" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<var>${response}</var>
-<arg>url=${HOST}/${GET_PRODUCTS}/${DELETE_PRODUCT}</arg>
+<msg time="2024-06-02T17:44:53.296266" level="INFO">${responseRequest} = &lt;Response [200]&gt;</msg>
+<var>${responseRequest}</var>
+<arg>url=${HOST}/${UPDATE_PRODUCT}</arg>
 <arg>headers=&amp;{headers}</arg>
-<doc>Sends a DELETE request.</doc>
-<status status="PASS" start="2024-05-13T16:23:49.173959" elapsed="1.033385"/>
+<arg>json=&amp;{body}</arg>
+<doc>Sends a PUT request.</doc>
+<status status="PASS" start="2024-06-02T17:44:52.240599" elapsed="1.055667"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-06-02T17:44:53.297265" level="INFO">${status_code} = 200</msg>
+<var>${status_code}</var>
+<arg>${responseRequest.status_code}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-06-02T17:44:53.296266" elapsed="0.000999"/>
 </kw>
 <return>
-<value>${response}</value>
-<status status="PASS" start="2024-05-13T16:23:50.207344" elapsed="0.000944"/>
+<value>${responseRequest}</value>
+<value>${status_code}</value>
+<status status="PASS" start="2024-06-02T17:44:53.297265" elapsed="0.000000"/>
 </return>
-<msg time="2024-05-13T16:23:50.208288" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<var>${response}</var>
-<status status="PASS" start="2024-05-13T16:23:49.167964" elapsed="1.040324"/>
-</kw>
-<kw name="Should Be True" owner="BuiltIn">
-<arg>${response.json()["isDeleted"]}</arg>
-<doc>Fails if the given condition is not true.</doc>
-<status status="PASS" start="2024-05-13T16:23:50.210286" elapsed="0.001998"/>
+<msg time="2024-06-02T17:44:53.298265" level="INFO">${responseRequest} = &lt;Response [200]&gt;</msg>
+<msg time="2024-06-02T17:44:53.298265" level="INFO">${status_code} = 200</msg>
+<var>${responseRequest}</var>
+<var>${status_code}</var>
+<arg>${values[0]}</arg>
+<arg>${values[1]}</arg>
+<arg>${values[2]}</arg>
+<arg>${values[3]}</arg>
+<arg>${values[4]}</arg>
+<arg>${values[5]}</arg>
+<status status="PASS" start="2024-06-02T17:44:52.228608" elapsed="1.069657"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2024-05-13T16:23:50.214284" level="INFO">{'id': 9, 'title': 'Infinix INBOOK', 'description': 'Infinix Inbook X1 Ci3 10th 8GB 256GB 14 Win10 Grey – 1 Year Warranty', 'price': 1099, 'discountPercentage': 11.83, 'rating': 4.54, 'stock': 96, 'brand': 'Infinix', 'category': 'laptops', 'thumbnail': 'https://cdn.dummyjson.com/product-images/9/thumbnail.jpg', 'images': ['https://cdn.dummyjson.com/product-images/9/1.jpg', 'https://cdn.dummyjson.com/product-images/9/2.png', 'https://cdn.dummyjson.com/product-images/9/3.png', 'https://cdn.dummyjson.com/product-images/9/4.jpg', 'https://cdn.dummyjson.com/product-images/9/thumbnail.jpg'], 'isDeleted': True, 'deletedOn': '2024-05-13T19:23:50.633Z'}</msg>
-<arg>${response.json()}</arg>
+<msg time="2024-06-02T17:44:53.300265" level="INFO">{'id': 80, 'title': 'Galaxy Isa', 'price': 6521, 'discountPercentage': 15.25, 'stock': 34, 'rating': 4.62, 'images': ['https://cdn.dummyjson.com/products/images/laptops/Huawei%20Matebook%20X%20Pro/1.png', 'https://cdn.dummyjson.com/products/images/laptops/Huawei%20Matebook%20X%20Pro/2.png', 'https://cdn.dummyjson.com/products/images/laptops/Huawei%20Matebook%20X%20Pro/3.png'], 'thumbnail': 'https://cdn.dummyjson.com/products/images/laptops/Huawei%20Matebook%20X%20Pro/thumbnail.png', 'description': 'novo celular isa', 'brand': 'Samsung', 'category': 'smartphones'}</msg>
+<arg>${responseRequest.json()}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2024-05-13T16:23:50.213285" elapsed="0.001997"/>
+<status status="PASS" start="2024-06-02T17:44:53.299273" elapsed="0.000992"/>
 </kw>
-<status status="PASS" start="2024-05-13T16:23:49.167964" elapsed="1.048318"/>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-06-02T17:44:53.301264" level="INFO">Galaxy Isa</msg>
+<arg>${responseRequest.json()["title"]}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-06-02T17:44:53.301264" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-06-02T17:44:53.303263" level="INFO">novo celular isa</msg>
+<arg>${responseRequest.json()["description"]}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-06-02T17:44:53.302263" elapsed="0.001000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-06-02T17:44:53.304262" level="INFO">6521</msg>
+<arg>${responseRequest.json()["price"]}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-06-02T17:44:53.304262" elapsed="0.000000"/>
+</kw>
+<kw name="Get Current Time" owner="ExcelLibrary">
+<msg time="2024-06-02T17:44:53.305261" level="INFO">${end_time} = 2024-06-02 17:44:53</msg>
+<var>${end_time}</var>
+<doc>Returns the current time as a string.</doc>
+<status status="PASS" start="2024-06-02T17:44:53.305261" elapsed="0.000999"/>
+</kw>
+<kw name="Write Start End to Excel">
+<kw name="Write Cell Value" owner="ExcelLibrary">
+<arg>${EXCEL_FILE}</arg>
+<arg>${TARGET_SHEET}</arg>
+<arg>A2</arg>
+<arg>${start}</arg>
+<doc>Writes a value to a specific cell in a specific sheet.</doc>
+<status status="PASS" start="2024-06-02T17:44:53.307260" elapsed="0.032981"/>
+</kw>
+<kw name="Write Cell Value" owner="ExcelLibrary">
+<arg>${EXCEL_FILE}</arg>
+<arg>${TARGET_SHEET}</arg>
+<arg>B2</arg>
+<arg>${end}</arg>
+<doc>Writes a value to a specific cell in a specific sheet.</doc>
+<status status="PASS" start="2024-06-02T17:44:53.341240" elapsed="0.029980"/>
+</kw>
+<kw name="Write Cell Value" owner="ExcelLibrary">
+<arg>${EXCEL_FILE}</arg>
+<arg>${TARGET_SHEET}</arg>
+<arg>C2</arg>
+<arg>${status_code}</arg>
+<doc>Writes a value to a specific cell in a specific sheet.</doc>
+<status status="PASS" start="2024-06-02T17:44:53.372219" elapsed="0.054967"/>
+</kw>
+<arg>${start_time}</arg>
+<arg>${end_time}</arg>
+<arg>${status_code}</arg>
+<status status="PASS" start="2024-06-02T17:44:53.306260" elapsed="0.121925"/>
+</kw>
+<status status="PASS" start="2024-06-02T17:44:52.156652" elapsed="1.279554"/>
 </test>
-<status status="PASS" start="2024-05-13T16:23:49.021513" elapsed="1.197767"/>
+<status status="PASS" start="2024-06-02T17:44:51.557014" elapsed="1.883191"/>
 </suite>
 <statistics>
 <total>
@@ -67,7 +167,7 @@
 <tag>
 </tag>
 <suite>
-<stat pass="1" fail="0" skip="0" id="s1" name="VerifyResponse">VerifyResponse</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="PUT">PUT</stat>
 </suite>
 </statistics>
 <errors>
