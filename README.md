@@ -1,1 +1,1 @@
-Projeto de testes automatizados em API com Robot Framework.
+Projeto de testes automatizados de API com Robot Framework.
